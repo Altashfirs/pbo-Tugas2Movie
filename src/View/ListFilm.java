@@ -63,7 +63,7 @@ public class ListFilm extends javax.swing.JFrame {
                 resetForm();
                 JOptionPane.showMessageDialog(this, "Film berhasil ditambahkan");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Pilih data dari tabel terlebih dahulu.");
+                JOptionPane.showMessageDialog(this, "Maksimal rating adalah 5");
                 return;
             }
         });

@@ -21,6 +21,13 @@ public class FilmDAO {
     }
     
     public void insert(ModelFilm film){
+        if (film.getAlur() > 5.0 || film.getPenokohan() > 5.0 || film.getAkting() > 5.0) {
+            throw new IllegalArgumentException("Nilai maksimal untuk alur, penokohan, dan akting adalah 5.0");
+        }
+        if (film.getAlur() < 0.0 || film.getPenokohan() < 0.0 || film.getAkting() < 0.0) {
+            throw new IllegalArgumentException("Nilai tidak boleh kurang dari 0.0");
+        }
+        
         String query = "INSERT INTO film (judul, alur, penokohan, akting, nilai) VALUES (?, ?, ?, ?, ?);";
         try (PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, film.getJudul());
